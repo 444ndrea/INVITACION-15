@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis 15 - Sofía - Un Verano Sin Ti</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Importación de Poppins y League Script -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;600;700;800;900&family=League+Script&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --uvst-blue: #00b4d8;  /* Azul característico del álbum */
+            --deep-navy: #1a3a5f;  /* Azul oscuro elegante */
+            --bad-red: #ff4d4d;    /* Rojo del corazón */
+            --sand-warm: #e9c46a;  /* Arena cálida del álbum */
+            --soft-cream: #f9f4ef;
+        }
+        
+        body {
+            background-color: var(--soft-cream);
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            color: var(--deep-navy);
+            overflow-x: hidden;
+        }
+
+        .main-card {
+            background: #fff;
+            box-shadow: 0 30px 60px rgba(26, 58, 95, 0.2);
+            position: relative;
+            overflow: hidden;
+            border: 2px solid var(--uvst-blue);
+            border-radius: 20px;
+        }
+
+        .neon-script {
+            font-family: 'League Script', cursive;
+            font-size: 4.5rem;
+            color: #fff;
+            line-height: 0.8;
+            text-shadow: 0 0 15px rgba(255,255,255,0.7);
+            transform: rotate(-3deg);
+            z-index: 20;
+        }
+
+        .bad-heart {
+            width: 80px;
+            height: 80px;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            z-index: 30;
+            filter: drop-shadow(0 5px 10px rgba(0,0,0,0.1));
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .sun-bg {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, var(--sand-warm) 0%, transparent 70%);
+            top: -150px;
+            left: -150px;
+            opacity: 0.4;
+        }
+
+        .name-title {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 900;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            font-size: 1.8rem;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .btn-action {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(90deg, var(--deep-navy), var(--uvst-blue));
+            color: #fff;
+            letter-spacing: 2px;
+            transition: all 0.4s ease;
+        }
+
+        .btn-action:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,180,216,0.3);
+        }
+
+        .divider-wave {
+            width: 100%;
+            height: 20px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z' fill='%2300b4d8' opacity='0.2'/%3E%3C/svg%3E");
+            background-size: cover;
+        }
+
+        /* Estilos del Reproductor de Música */
+        .music-player {
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid var(--uvst-blue);
+            border-radius: 50px;
+            padding: 10px 15px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 20px;
+            box-shadow: 0 4px 12px rgba(0, 180, 216, 0.1);
+        }
+
+        .play-btn {
+            width: 35px;
+            height: 35px;
+            background: var(--bad-red);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            cursor: pointer;
+            transition: transform 0.2s;
+            flex-shrink: 0;
+        }
+
+        .play-btn:active { transform: scale(0.9); }
+
+        .music-waves {
+            display: flex;
+            align-items: flex-end;
+            gap: 2px;
+            height: 12px;
+        }
+
+        .wave-bar {
+            width: 2px;
+            background: var(--uvst-blue);
+            border-radius: 10px;
+            height: 4px;
+        }
+
+        .playing .wave-bar {
+            animation: wave-anim 1s infinite ease-in-out;
+        }
+
+        @keyframes wave-anim {
+            0%, 100% { height: 4px; }
+            50% { height: 12px; }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen p-6">
+
+    <div class="max-w-md w-full main-card animate-[fadeIn_1s_ease]">
+        
+        <!-- Parte Superior: Vibes Un Verano Sin Ti -->
+        <div class="relative h-72 flex flex-col items-center justify-center overflow-hidden" style="background: linear-gradient(180deg, #0077b6 0%, #90e0ef 100%);">
+            <div class="sun-bg"></div>
+            
+            <!-- Corazón icónico -->
+            <div class="bad-heart">
+                <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                    <path fill="#ff4d4d" d="M100,180 C100,180 20,130 20,70 C20,30 60,20 100,60 C140,20 180,30 180,70 C180,130 100,180 100,180 Z"/>
+                    <circle cx="100" cy="85" r="25" fill="white" />
+                    <circle cx="100" cy="85" r="12" fill="black" />
+                    <path d="M85,115 Q100,130 115,115" stroke="black" stroke-width="3" fill="none" />
+                </svg>
+            </div>
+
+            <div class="z-10 text-center">
+                <h2 class="neon-script">Pool Party</h2>
+                <p class="name-title">SOFÍA</p>
+                <p class="text-[10px] text-white tracking-[0.4em] mt-2 font-bold uppercase">Mis Quince Años</p>
+            </div>
+
+            <div class="absolute bottom-0 w-full flex justify-between px-4 opacity-30">
+                <span class="text-4xl">🌴</span>
+                <span class="text-4xl">🌴</span>
+            </div>
+        </div>
+
+        <div class="divider-wave"></div>
+
+        <!-- Información -->
+        <div class="p-8 text-center relative bg-white">
+            <p class="text-[10px] uppercase tracking-[0.3em] font-bold mb-6 text-cyan-600">Un Verano Contigo</p>
+            
+            <div class="grid grid-cols-2 gap-4 mb-6">
+                <div class="bg-blue-50 p-4 rounded-xl border border-blue-100">
+                    <p class="text-[10px] uppercase font-bold text-blue-400">Fecha</p>
+                    <p class="text-2xl font-black text-blue-900">16.02</p>
+                    <p class="text-[9px] uppercase tracking-widest font-semibold">Domingo</p>
+                </div>
+                <div class="bg-orange-50 p-4 rounded-xl border border-orange-100">
+                    <p class="text-[10px] uppercase font-bold text-orange-400">Hora</p>
+                    <p class="text-2xl font-black text-orange-900">10:00</p>
+                    <p class="text-[9px] uppercase tracking-widest font-semibold">A.M.</p>
+                </div>
+            </div>
+
+            <div class="mb-6 p-4 bg-gray-50 rounded-lg">
+                <p class="text-[10px] uppercase font-bold text-gray-400 mb-1">Dónde</p>
+                <p class="text-sm font-bold tracking-tight text-blue-900 uppercase">Piscina Mendoza</p>
+                <p class="text-[11px] text-gray-500 font-medium">Nueva Cúa, Estado Miranda</p>
+            </div>
+
+            <!-- Reproductor de Música: Andrea -->
+            <div class="music-player mb-6" id="player-container">
+                <div class="play-btn" onclick="toggleMusic()">
+                    <span id="play-icon">▶</span>
+                </div>
+                <div class="text-left flex-1">
+                    <p class="text-[9px] font-black text-slate-600 uppercase tracking-wider leading-none">Andrea</p>
+                    <p class="text-[8px] text-slate-400 uppercase tracking-tighter">Bad Bunny ft. Buscabulla</p>
+                    
+                </div>
+                <div class="music-waves" id="waves">
+                    <div class="wave-bar" style="animation-delay: 0.1s"></div>
+                    <div class="wave-bar" style="animation-delay: 0.3s"></div>
+                    <div class="wave-bar" style="animation-delay: 0.5s"></div>
+                    <div class="wave-bar" style="animation-delay: 0.2s"></div>
+                </div>
+            </div>
+
+            <p class="text-[11px] text-gray-500 italic mb-6 leading-relaxed font-light">
+                "No quiero que este verano se acabe sin celebrar contigo. 
+                Vístete de azul o crema y prepárate para la mejor party."
+            </p>
+
+            <div class="space-y-3">
+                <button onclick="confirmar()" class="w-full py-4 btn-action text-xs font-black uppercase rounded-xl shadow-lg">
+                    Confirmar mi Asistencia 🌊
+                </button>
+                <a href="https://maps.google.com" target="_blank" class="block w-full py-3 text-[10px] font-bold uppercase tracking-widest text-cyan-600 border-2 border-cyan-100 rounded-xl hover:bg-cyan-50 transition">
+                    Ver Mapa 📍
+                </a>
+            </div>
+
+            <div class="mt-6 flex justify-center items-center gap-6">
+                <span class="text-2xl grayscale hover:grayscale-0 transition cursor-default">🌞</span>
+                <span class="text-2xl grayscale hover:grayscale-0 transition cursor-default">🍹</span>
+                <span class="text-2xl grayscale hover:grayscale-0 transition cursor-default">🐬</span>
+            </div>
+            
+            <p class="mt-4 text-[8px] uppercase tracking-[0.5em] text-gray-300 font-semibold">Dress Code: Playero Elegante</p>
+        </div>
+    </div>
+
+    <!-- Elemento de Audio Oculto -->
+    <audio id="bg-music" loop>
+        <!-- Reemplazar src con un link directo al mp3 si está disponible -->
+        <source src="musica.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Modal de Confirmación -->
+    <div id="modal" class="fixed inset-0 bg-blue-900/60 backdrop-blur-md hidden items-center justify-center z-50 p-6">
+        <div class="bg-white rounded-3xl p-10 max-w-xs w-full text-center shadow-2xl border-4 border-white">
+            <div class="text-4xl mb-4">❤️</div>
+            <h3 class="font-black text-xl text-blue-900 mb-2 uppercase tracking-tighter">¿Vienes a la party?</h3>
+            <p class="text-sm text-gray-500 mb-6 font-medium">Confirma para guardar tu lugar en la piscina.</p>
+            <div class="flex flex-col gap-3">
+                <button onclick="irWhatsApp()" class="bg-green-500 text-white py-4 rounded-2xl font-bold uppercase text-xs tracking-widest hover:bg-green-600 transition shadow-lg">Confirmar Asistencia</button>
+                <button onclick="cerrarModal()" class="text-[10px] uppercase font-bold text-gray-400 mt-2">Quizás luego</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const audio = document.getElementById('bg-music');
+        const playIcon = document.getElementById('play-icon');
+        const playerContainer = document.getElementById('player-container');
+
+        function toggleMusic() {
+            if (audio.paused) {
+                audio.play();
+                playIcon.innerText = '⏸';
+                playerContainer.classList.add('playing');
+            } else {
+                audio.pause();
+                playIcon.innerText = '▶';
+                playerContainer.classList.remove('playing');
+            }
+        }
+
+        function confirmar() {
+            document.getElementById('modal').style.display = 'flex';
+        }
+
+        function cerrarModal() {
+            document.getElementById('modal').style.display = 'none';
+        }
+
+        function irWhatsApp() {
+            const mensaje = encodeURIComponent("¡Ey Sofía! No me pierdo tu pool party de 15 por nada. ¡Confirmo mi asistencia! 🌊❤️");
+            window.open(`https://wa.me/?text=${mensaje}`, '_blank');
+            cerrarModal();
+        }
+    </script>
+</body>
+</html>
